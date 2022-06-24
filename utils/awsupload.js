@@ -9,6 +9,8 @@ const s3= new AWS.S3({
     secretAccessKey:secret
 });
 const uploadFile=async  (file,bucket)=>{
+    console.log(file);
+  
     const fs= require('fs');
        try{
         const params={

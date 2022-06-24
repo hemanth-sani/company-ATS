@@ -55,16 +55,16 @@ const router = express.Router();
 
 router.post("/upload",upload.array('file'),(req,res,next)=>{
     
-    setTimeout(()=>{
+//     setTimeout(()=>{
         
-        console.log(candidateId);
-        const candidateId = Candidate.findById(convertToObjectID(req.body.candidateid));
-        if(!candidateId){
-            throw new Error("Candidate details already not found!");
-        }
-        const candidate= Candidate.updateOne({resumeId,uniqueId});
-        response.successReponse({status:201,result:candidate,res});
-},2000)
+//         console.log(candidateId);
+//         const candidateId = Candidate.findById(convertToObjectID(req.body.candidateid));
+//         if(!candidateId){
+//             throw new Error("Candidate details already not found!");
+//         }
+//         const candidate= Candidate.updateOne({resumeId,uniqueId});
+//         response.successReponse({status:201,result:candidate,res});
+// },2000)
 });
 
 module.exports = router;

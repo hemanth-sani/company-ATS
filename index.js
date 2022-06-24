@@ -10,6 +10,7 @@ const router = require('./router/router')
 // const multer = require("multer");
 
 //
+const uploadFile = require('./utils/awsupload');
 const cors = require('cors');
 const { errorResponse } = require('./utils/Response')
 const error = require('./middleware/error')
@@ -77,9 +78,9 @@ app.use((req, res, next) => {
 //     })
 // });
 
-// app.post("/file", upload.array('file'), function (req, res, next) {
-//   const file = req.file;
-//   console.log(file);
+// app.post("/file", function (req, res, next) {
+//   const file = req;
+//   console.log("File name: ",file);
 //   if (file) {
 //     res.json(req.file);
 //   } else throw "error";
