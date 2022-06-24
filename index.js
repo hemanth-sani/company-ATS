@@ -25,7 +25,7 @@ connectDB();
 
 app.use(express.json());
 const corsOptions = {
-  origin: "*",
+  origin: "https://ats-deploy-1.herokuapp.com/",
   methods: ["POST", "GET", "PUT", "DELETE"]
 }
 
