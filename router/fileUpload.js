@@ -9,7 +9,7 @@ const express = require('express');
 const Candidate= require('../models/candidate');
 const response = require('../utils/Response');
 const { setTimeout } = require('timers/promises');
-const cors = require('cors');
+
 
 // const s3 = new aws.S3({apiVersion: '2006-03-01'});
 
@@ -17,29 +17,6 @@ const s3= new aws.S3({
     accessKeyId:process.env.AWS_Hemanth_ID,
     secretAccessKey:process.env.AWS_Hemanth_Key
 });
-const app = express();
-
-app.use(express.json());
-const corsOptions = {
-  origin: "*",
-  methods: ["POST", "GET", "PUT", "DELETE"]
-}
-app.use(cors(corsOptions))
-app.use((req, res, next) => {
-    // console.log(req.hostname, req.headers, req.path);
-  
-    try {
-      const allowedMethods = ["POST", "GET", "PUT", "DELETE"];
-      if (!allowedMethods.includes(req.method)) {
-        // errorResponse({ status: 400, result: `${req.method} method is not allowed`, res })
-        throw "not allowed"
-  
-      }
-    } catch (error) {
-      errorResponse({ status: 400, result: `${req.method} method is not allowed`, res })
-    }
-    next();
-  });
 
 
 var unique;
