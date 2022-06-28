@@ -7,7 +7,7 @@ const path = require('path');
 const express = require('express');
 
 const Candidate= require('../models/candidate');
-const response = require('../utils/Response');
+// const response = require('../utils/Response');
 const { setTimeout } = require('timers/promises');
 
 
