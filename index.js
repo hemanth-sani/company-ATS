@@ -43,8 +43,9 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use((req, res, next) => {
   // console.log(req.hostname, req.headers, req.path);
-
+  res.header('Access-Control-Allow-Credentials', true);
   try {
+    
     const allowedMethods = ["POST", "GET", "PUT", "DELETE"];
     if (!allowedMethods.includes(req.method)) {
       // errorResponse({ status: 400, result: `${req.method} method is not allowed`, res })
