@@ -1,8 +1,9 @@
-const aws = require('aws-sdk');
+const { S3Client } = require('@aws-sdk/client-s3');
+
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const uuid = require('uuid').v4;
-const { S3Client } = require('@aws-sdk/client-s3')
+
 const path = require('path');
 const express = require('express');
 
