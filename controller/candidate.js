@@ -9,15 +9,16 @@ class CandidateClass{
     async createCandidate(req,res,next){
         try {
            const requirementid= await Requirements.findById(convertToObjectID(req.body.RequirementId))
-           if(!requirementid){
-               throw new Error("Requirement does not exist")
+           if(!requirementid || requirementid === 'INACTIVE'){
+               throw new Error("Requirement does not exist (or) Requirement fullfilled")
            }
            const existingCandidate= await Candidate.findOne({pannumber:req.body.pannumber, candidateemail:req.body.candidateemail});
    
            if(existingCandidate){
             throw new Error("Candidate details already exists")
            }
-            const candidate= await Candidate.create(req.body)
+            const candidate= await Candidate.create(req.body);
+            const updatereq =await Requirements.findByIdAndUpdate({_id:req.body.RequirementId},{$set:{submittedcandidates:submittedcandidates + 1}},{new:true})
 
             response.successReponse({status:201,result:candidate,res})
         } catch (error) {
@@ -73,6 +74,7 @@ class CandidateClass{
                 throw new Error("candidate Id did not match")
             }
             const Candidates = await Candidate.findByIdAndUpdate({_id:candidateid._id},{$set:{RequirementId:null}},{new:true})
+            const updatereq =await Requirements.findByIdAndUpdate({_id:req.body.RequirementId},{$set:{submittedcandidates:submittedcandidates -1 }},{new:true})
             response.successReponse({status:200,result:Candidates, res})
         } catch (error) {
         error.statusCode=400;

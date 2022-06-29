@@ -3,6 +3,7 @@ const Requirements= require('../models/requirements');
 const log = require('../utils/bunyanLogger');
 const response = require('../utils/Response');
 const Client= require('../models/client');
+const Candidate = require('../models/candidate')
 const { convertToObjectID } = require('../utils/misc');
 const req = require('express/lib/request');
 class RequirementClass{
@@ -43,10 +44,12 @@ class RequirementClass{
                  requirements=await Requirements.find({RequirementName:req.query.name}).populate("ClientId","-_id -AM -__v")
                  count=await Requirements.countDocuments({RequirementName:req.query.name})
                  posting = await Candidate.find({RequirementId:req.body.RequirementId}).countDocuments()
+
             }else{
 
                  requirements= await Requirements.find().populate("ClientId","-_id -AM -__v")
                   count= await Requirements.countDocuments();
+                 
             }
            
             response.successReponse({status:200,result:{count,requirements,posting},res})
@@ -70,6 +73,22 @@ class RequirementClass{
                 next(error)
             }
             }
+
+            async StopRequirementPostings(req,res,next){
+                const reqid = req.body.id
+                console.log(reqid)
+                try {
+                const singlereq = await Requirements.findById(reqid)
+                if(!singlereq){
+                    throw new Error("Requirement not found!")
+                }
+                const updatereq =await Requirements.findByIdAndUpdate({_id:reqid},{$set:{Status:'INACTIVE'}},{new:true})
+                    response.successReponse({status:200,result:updatereq,res})
+                } catch (error) {
+                    error.statusCode=400;
+                    next(error)
+                }
+                }
             
         // async SingleRequDetails(req,res,next){
         //     const reqid = req.body.id

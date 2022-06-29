@@ -42,9 +42,11 @@ CreatedDate:String,
     ECVS:Number,
     Description:String,
     Suggestion:String,
-    InternalJobCode:String
-
-
+    InternalJobCode:String,
+    submittedcandidates :{
+        type:Number,
+        default:0
+    },
     
 
 });

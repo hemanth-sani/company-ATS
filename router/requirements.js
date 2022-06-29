@@ -11,6 +11,8 @@ requirementRouter.post("/singleRequirement",protect, authorize({permissionType:"
 // requirementRouter.post("/singleRequ",protect, authorize({permissionType:"READ",moduleName:"Requirements"}),Requirement.SingleRequDetails);
 requirementRouter.get("/listjwtreqs",protect,Requirement.reqonjwtreqs);
 requirementRouter.put("/asignias",protect,Requirement.AssignIAtoReq);
+requirementRouter.post("/Stoppostings",protect,Requirement.StopRequirementPostings);
+
 
 
 
