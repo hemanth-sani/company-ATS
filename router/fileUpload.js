@@ -67,7 +67,7 @@ router.post("/upload",upload.array('upload'),(req,res,next)=>{
 //         response.successReponse({status:201,result:candidate,res});
 // },2000)
 }); 
-
+ 
 module.exports = router;
 
 
