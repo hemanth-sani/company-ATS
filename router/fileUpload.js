@@ -66,7 +66,7 @@ router.post("/upload",upload.array('upload'),(req,res,next)=>{
 //         const candidate= Candidate.updateOne({resumeId,uniqueId});
 //         response.successReponse({status:201,result:candidate,res});
 // },2000)
-});
+}); 
 
 module.exports = router;
 
