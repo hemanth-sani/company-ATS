@@ -11,3 +11,6 @@ roleRouter.put("/editRolePermission",protect,authorize({permissionType:"WRITE",m
 
 
 module.exports= roleRouter;
+
+
+// protect,authorize({permissionType:"WRITE",moduleName:"Roles"}),

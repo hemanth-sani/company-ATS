@@ -6,9 +6,9 @@ const uuid = require('uuid').v4;
 const path = require('path');
 const express = require('express');
 
-const Candidate= require('../models/candidate');
+// const Candidate= require('../models/candidate');
 // const response = require('../utils/Response');
-const { setTimeout } = require('timers/promises');
+// const { setTimeout } = require('timers/promises');
 
 
 // const s3 = new aws.S3({apiVersion: '2006-03-01'});
@@ -69,3 +69,28 @@ router.post("/upload",upload.array('upload'),(req,res,next)=>{
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+// const s3 = new aws.S3({apiVersion: '2006-03-01'});
+
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb) =>{
+//         cb(null,'uploads');
+//     },
+//     filename:(req,file,cb)=>{
+//         const { originalname }=file;
+//         cb(null, `${uuid()}-${originalname}`);
+//     }
+// });
+
+// const upload = multer({storage});

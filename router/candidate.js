@@ -11,5 +11,6 @@ candidateRouter.post("/assignedcandidates",protect, Candidate.assignedCandidates
 // requirementRouter.post("/singleRequirement",protect, authorize({permissionType:"READ",moduleName:"Requirements"}),Requirement.SingleRequirementDetails);
 candidateRouter.get("/listreqcandidates",protect, Candidate.listReqCandidates);
 
+candidateRouter.put("/Delreqidfromcandi", Candidate.DelCandifromReq);
 
 module.exports= candidateRouter

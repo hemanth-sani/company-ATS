@@ -8,7 +8,6 @@ const userschema = mongoose.Schema({
     },
     lastname:{
         type:String,
-        required:true
     },
     token:String,
     
@@ -30,7 +29,7 @@ const userschema = mongoose.Schema({
     emailVerifed:{
          type:Boolean,
          enum:[true,false],
-         default:false
+         default:true
     },
     roleApplied:{
         type: String,

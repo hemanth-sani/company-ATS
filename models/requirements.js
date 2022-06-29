@@ -17,8 +17,10 @@ const requirementsSchema =  mongoose.Schema({
     Experience:String,
     Postions:String,
     NoOfPosts:String,
+    RGMspoc:String,
     Skills:[String],
     PrimarySkill:String,
+    SecondarySkills:[String],
 CreatedDate:String,
     AssignedAM:{
         type:mongoose.Schema.Types.ObjectId,

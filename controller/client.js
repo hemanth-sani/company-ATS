@@ -2,20 +2,21 @@ const ClientModel= require("../models/client");
 const user = require("../models/user");
 const log = require("../utils/bunyanLogger");
 const response = require('../utils/Response');
+const { convertToObjectID } = require('../utils/misc');
 
 class Client{
     constructor(){
-
     }
 
     async createClient(req,res,next){
         try {
-            const employee= await user.findOne({email:req.body.email})
+            const employee= await user.findById(convertToObjectID(req.body.AM))
             const Client= await ClientModel.findOne({clientName:req.body.clientName,location:req.body.location})
-               log.info(employee)
-            if(!employee|| employee.roleApplied!=="EMPLOYEE"){
+            
+            if(employee.roleApplied !== 'MANAGER'){
                 throw new Error("AM not found")
             }
+            log.info(employee.roleApplied ,'im out')
               if(Client){
                   throw new Error("Client Already exists")
               }

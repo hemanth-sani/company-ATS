@@ -10,3 +10,6 @@ permissionRouter.put("/removeModuleFromPermission",protect,authorize({permission
 permissionRouter.delete("/deletePermission",protect,authorize({permissionType:"DELETE",moduleName:"Permissions"}),permission.deletePermission)
 
 module.exports= permissionRouter;
+
+
+// protect,authorize({permissionType:"WRITE",moduleName:"Permissions"}),

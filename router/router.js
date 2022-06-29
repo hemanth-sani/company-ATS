@@ -9,8 +9,7 @@ const requirementRouter= require('./requirements');
 const candidateRouter= require('./candidate');
 const skillRouter= require('./skill');
 const locationRouter= require('./location');
-const fileRouter= require('./fileUpload');
-
+const fileRouter= require('./uploadedFile');
 
 const router = express.Router();
 
@@ -25,7 +24,6 @@ router.use("/candidate",candidateRouter);
 router.use("/skill",skillRouter);
 router.use("/location",locationRouter);
 router.use("/fileupload",fileRouter);
-
 
 
 

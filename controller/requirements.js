@@ -38,17 +38,18 @@ class RequirementClass{
         try {
             // const pageNo = +req.query.pageNo || 0;
             // const itemsPerPage = +req.query.itemsPerPage || 10;
-            let requirements,count;
+            let requirements,count,posting;
             if(req.query.name){
                  requirements=await Requirements.find({RequirementName:req.query.name}).populate("ClientId","-_id -AM -__v")
                  count=await Requirements.countDocuments({RequirementName:req.query.name})
+                 posting = await Candidate.find({RequirementId:req.body.RequirementId}).countDocuments()
             }else{
 
                  requirements= await Requirements.find().populate("ClientId","-_id -AM -__v")
                   count= await Requirements.countDocuments();
             }
            
-            response.successReponse({status:200,result:{count,requirements},res})
+            response.successReponse({status:200,result:{count,requirements,posting},res})
         } catch (error) {
             error.statusCode=400;
             next(error)

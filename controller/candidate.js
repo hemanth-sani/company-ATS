@@ -55,6 +55,30 @@ class CandidateClass{
         next(error)
     }
     }
+
+   
+    async DelCandifromReq(req,res,next){
+        console.log(req.body);
+        const candiid =req.body.candidateid;
+        // const reqch = ObjectID('putWhatEverYouWantHere');
+        try{
+            const requirementid= await Requirements.findById(convertToObjectID(req.body.reqid))
+            console.log(requirementid);
+            if(!requirementid){
+                throw new Error("Requirement does not match with candidate")
+            }
+            const candidateid = await Candidate.findById(convertToObjectID(req.body.candidateid))
+            console.log(candidateid);
+            if(!candidateid){
+                throw new Error("candidate Id did not match")
+            }
+            const Candidates = await Candidate.findByIdAndUpdate({_id:candidateid._id},{$set:{RequirementId:null}},{new:true})
+            response.successReponse({status:200,result:Candidates, res})
+        } catch (error) {
+        error.statusCode=400;
+        next(error)
+    }
+    }
     
 
 }
