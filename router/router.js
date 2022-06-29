@@ -23,7 +23,7 @@ router.use("/requirement",requirementRouter);
 router.use("/candidate",candidateRouter);
 router.use("/skill",skillRouter);
 router.use("/location",locationRouter);
-router.use("/fileupload",fileRouter);
+// router.use("/fileupload",fileRouter);
 
 
 
